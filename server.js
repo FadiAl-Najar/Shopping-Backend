@@ -10,7 +10,7 @@ require("dotenv").config();
 server.use(express.json());
 server.use(errorHandler);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const client = new pg.Client(process.env.DATABASE_URL);
 
 server.get("/", homeHandler);
@@ -26,7 +26,7 @@ function homeHandler(req, res) {
 
 function getProducts(req, res) {
   const API_URL =
-    "https://unofficial-shein.p.rapidapi.com/products/list?cat_id=1981&adp=10170797&language=en&country=US&currency=USD&sort=7&limit=20&page=1";
+    "https://unofficial-shein.p.rapidapi.com/products/list?cat_id=1981&adp=10170797&language=en&country=Jordan&currency=USD&sort=7&limit=20&page=1";
   const options = {
     headers: {
       "X-RapidAPI-Key": process.env.KEY_API,
